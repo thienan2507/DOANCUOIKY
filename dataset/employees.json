@@ -1,0 +1,32 @@
+[
+    {
+        "EmployeeId": "E1",
+        "EmployeeName": "Nguyễn Thị Thiên Ân",
+        "UserName": "an",
+        "Password": "123"
+    },
+    {
+        "EmployeeId": "E2",
+        "EmployeeName": "Nguyễn Thị Mỹ Duyên",
+        "UserName": "duyen",
+        "Password": "234"
+    },
+    {
+        "EmployeeId": "E3",
+        "EmployeeName": "Nguyễn Thị Thu Hồng",
+        "UserName": "hong",
+        "Password": "456"
+    },
+    {
+        "EmployeeId": "E4",
+        "EmployeeName": "Trương Thị Thuỳ Trinh",
+        "UserName": "trinh",
+        "Password": "567"
+    },
+    {
+        "EmployeeId": "E5",
+        "EmployeeName": "Trần Bảo Anh",
+        "UserName": "anh",
+        "Password": "678"
+    }
+]
