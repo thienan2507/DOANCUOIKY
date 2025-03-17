@@ -104,22 +104,6 @@ background-color: rgb(246, 254, 228);</string>
      <string>Password:</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBoxSaveInformation">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>170</y>
-      <width>241</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Save login information</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButtonLogin">
     <property name="geometry">
      <rect>
@@ -154,6 +138,42 @@ background-color: rgb(255, 230, 225);</string>
      <string>Exit</string>
     </property>
    </widget>
+   <widget class="QRadioButton" name="radioButtonEmployee">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>170</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Employee</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButtonManager">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>170</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Manager</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -161,7 +181,7 @@ background-color: rgb(255, 230, 225);</string>
      <x>0</x>
      <y>0</y>
      <width>437</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

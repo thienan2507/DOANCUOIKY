@@ -16,17 +16,5 @@
         "EmployeeName": "Nguyễn Thị Thu Hồng",
         "UserName": "hong",
         "Password": "456"
-    },
-    {
-        "EmployeeId": "E4",
-        "EmployeeName": "Trương Thị Thuỳ Trinh",
-        "UserName": "trinh",
-        "Password": "567"
-    },
-    {
-        "EmployeeId": "E5",
-        "EmployeeName": "Trần Bảo Anh",
-        "UserName": "anh",
-        "Password": "678"
     }
 ]

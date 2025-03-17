@@ -27,3 +27,4 @@ class JsonFileFactory:
         arr_data=json.loads(file.read(),object_hook=lambda cls:ClassName(**cls))
         file.close()
         return arr_data
+

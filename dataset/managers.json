@@ -1,0 +1,14 @@
+[
+    {
+        "EmployeeId": "M1",
+        "EmployeeName": "Trương Thị Thuỳ Trinh",
+        "UserName": "trinh",
+        "Password": "567"
+    },
+    {
+        "EmployeeId": "M2",
+        "EmployeeName": "Trần Bảo Anh",
+        "UserName": "anh",
+        "Password": "678"
+    }
+]

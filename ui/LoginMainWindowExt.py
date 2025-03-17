@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QMainWindow, QMessageBox
+from PyQt6.QtWidgets import QMessageBox, QMainWindow
 
 from DoAnCuoiKy.libs.DataConnector import DataConnector
 from DoAnCuoiKy.ui.LoginMainWindow import Ui_MainWindow
@@ -19,21 +19,32 @@ class LoginMainWindowExt(Ui_MainWindow):
         self.pushButtonExit.clicked.connect(self.process_exit)
 
     def process_login(self):
-    #button login
+    #hàm kiểm tra thông tin nhập người dùng và xác định vai trò user
+        username = self.lineEditUserName.text()
+        password = self.lineEditPassword.text()
+        if not username or not password:
+            QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng nhập đầy đủ username và password!")
+            return
+            # Xác định vai trò từ radio button
+        if self.radioButtonEmployee.isChecked():
+            role = "Employee"
+        elif self.radioButtonManager.isChecked():
+            role = "Manager"
+        else:
+            QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn vai trò!")
+            return
+        # Kết nối database
         dc = DataConnector()
-        uid = self.lineEditUserName.text()
-        pwd = self.lineEditPassword.text()
-        emp = dc.login(uid, pwd)
-        if emp != None:
-            self.MainWindow.close()  # close login window
+        user = dc.login(username, password, role)  # Truy vấn user theo role => thuc hiện login
+        #nếu thành công
+        if user:
+            self.MainWindow.close()
             self.mainwindow = QMainWindow()
-            self.myui = MaterialManagementExt()
+            self.myui = MaterialManagementExt(role) #mo cửa sổ nguyên liệu theo vai trò
             self.myui.setupUi(self.mainwindow)
             self.myui.showWindow()
         else:
-            self.msg = QMessageBox(self.MainWindow)
-            self.msg.setText("Đăng nhập thất bại")
-            self.msg.exec()
+            QMessageBox.warning(self.MainWindow, "Lỗi", "Tên đăng nhập hoặc mật khẩu không đúng!")
 
     def process_exit(self):
     #button exit

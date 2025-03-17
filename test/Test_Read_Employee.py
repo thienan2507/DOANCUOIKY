@@ -7,3 +7,4 @@ employees=jff.read_data(filename,Employee)
 print("Danh sách Employee sau khi đọc file:")
 for e in employees:
     print(e)
+

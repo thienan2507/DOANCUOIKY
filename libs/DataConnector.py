@@ -1,5 +1,6 @@
 from DoAnCuoiKy.libs.JsonFactory import JsonFileFactory
 from DoAnCuoiKy.models.Employee import Employee
+from DoAnCuoiKy.models.Manager import Manager
 from DoAnCuoiKy.models.Material import Material
 
 
@@ -18,15 +19,33 @@ class DataConnector:
         employees = jff.read_data(filename, Employee)
         return employees
 
-    def login(self,username,password):
-    #đăng nhập ở màn hình login
-    #lấy thông tin nhân viên
-    #kiểm tra tên đăng nhập có trùng khớp với tên đăng nhập trong dữ liệu sẵn có không
-        employees=self.get_all_employees()
-        for e in employees:
-            if e.UserName==username and e.Password == password:
-                return e
-        return None
+    def get_all_managers(self):
+    #lấy tất cả thông tin của quản lí
+        jff = JsonFileFactory()
+        filename = '../dataset/managers.json'
+        managers = jff.read_data(filename, Manager)
+        return managers
+
+    def get_all_users(self):
+    #lấy thông tin của quản l và cả nhân viên để tạo hàm log in
+        jff = JsonFileFactory()
+        managers = jff.read_data("../dataset/managers.json", Manager)
+        employees = jff.read_data("../dataset/employees.json", Employee)
+        # Gán role
+        for manager in managers:
+            manager.Role = "Manager"
+        for employee in employees:
+            employee.Role = "Employee"
+        users = managers + employees
+        return users
+
+    def login(self, username, password, role):
+    #hàm xử lí username,password,role có trùng khớp không
+        users = self.get_all_users()
+        for user in users:
+            if user.UserName == username and user.Password == password and user.Role == role:
+                return user  # Nếu tìm thấy user hợp lệ, trả về ngay
+        return None  # Trả về None để báo rằng đăng nhập thất bại
 
     def find_index_material(self,name):
     #tìm vị trí của nguyên liệu trong danh sách

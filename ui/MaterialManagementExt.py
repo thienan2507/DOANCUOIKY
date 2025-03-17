@@ -12,12 +12,12 @@ from DoAnCuoiKy.ui.MaterialManagement import Ui_mainWindow
 
 
 class MaterialManagementExt(Ui_mainWindow):
-    def __init__(self):
+    def __init__(self,role):
         self.dc=DataConnector()
-        self.materials=[]
-        self.employees=[]
+        self.role = role
         self.materials=self.dc.get_all_materials()
         self.employees=self.dc.get_all_employees()
+        self.managers=self.dc.get_all_managers()
         self.selected_material = None
         self.daily_summary_window = None
 
@@ -26,6 +26,8 @@ class MaterialManagementExt(Ui_mainWindow):
         self.MainWindow=MainWindow
         self.hienthi_sp_len_giaodien()
         self.setupSignalAndSlot()
+        if self.role == "Employee": #nếu user log in vào là nhân viên => không duoc bấm "Daily Summary"
+            self.pushButtonDailySummary.setEnabled(False)
 
     def showWindow(self):
         self.MainWindow.show()
@@ -64,6 +66,8 @@ class MaterialManagementExt(Ui_mainWindow):
             btn = QPushButton(text=str(mt))
             self.verticalLayoutButton.addWidget(btn)
             btn.clicked.connect(functools.partial(self.xem_chi_tiet, mt))
+            if mt.import_qty <3: #nếu số lượng hàng tồn nguyên lieu dưới 3 (sắp hết) báo đỏ để dễ nhận biết
+                btn.setStyleSheet("background-color: red; color: white;")
 
     def xem_chi_tiet(self, mt):
     #xem chi tiết details
@@ -102,7 +106,7 @@ class MaterialManagementExt(Ui_mainWindow):
             self.dc.save_new_material(material)  #gọi hàm lưu mới
             QMessageBox.information(self.MainWindow, "Thành công", "Nguyên liệu đã được thêm mới!")
         else:#đã tồn tại
-            self.dc.save_update_material(material)  # ✅ Gọi hàm cập nhật
+            self.dc.save_update_material(material)  # Gọi hàm cập nhật
             QMessageBox.information(self.MainWindow, "Thành công", "Nguyên liệu đã được cập nhật!")
         # Cập nhật lại danh sách hiển thị
         self.materials = self.dc.get_all_materials()
@@ -229,7 +233,7 @@ class MaterialManagementExt(Ui_mainWindow):
     def export_to_excel(self):
         filename = '../dataset/materials.xlsx'
         extool = Tool()
-        extool.export_materials_to_excel(filename,self.materials)
+        extool.export_materials_to_excel(filename, self.materials)
         msgbox = QMessageBox(self.MainWindow)
         msgbox.setText("Đã export thành công")
         msgbox.setWindowTitle("Thông báo")
@@ -265,6 +269,8 @@ class MaterialManagementExt(Ui_mainWindow):
         current_path = os.getcwd()
         file_help = f"{current_path}/../assets/{file_help}"
         webbrowser.open_new(file_help)
+
+
 
 
 

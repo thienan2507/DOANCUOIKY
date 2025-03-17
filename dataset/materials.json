@@ -4,80 +4,80 @@
         "type": "Ngắn hạn",
         "supplier": "Lò bánh A",
         "import_price": 2000,
-        "import_qty": 50.0,
+        "import_qty": 0,
         "sell_price": 7000,
-        "sold_qty": 50.0,
-        "use_day": 1
+        "sold_qty": 0,
+        "use_day": 0
     },
     {
         "name": "Chả lụa",
         "type": "Ngắn hạn",
         "supplier": "Lò chả B",
         "import_price": 150000,
-        "import_qty": 2.0,
+        "import_qty": 1.0,
         "sell_price": 250000,
-        "sold_qty": 1.0,
-        "use_day": 2
+        "sold_qty": 0,
+        "use_day": 0
     },
     {
         "name": "Dưa leo",
         "type": "Ngắn hạn",
         "supplier": "Chợ C",
         "import_price": 20000,
-        "import_qty": 3.0,
+        "import_qty": 1.5,
         "sell_price": 35000,
-        "sold_qty": 1.5,
-        "use_day": 2
+        "sold_qty": 0,
+        "use_day": 0
     },
     {
         "name": "Đồ chua",
         "type": "Ngắn hạn",
         "supplier": "Chợ C",
         "import_price": 30000,
-        "import_qty": 5.0,
+        "import_qty": 2.5,
         "sell_price": 50000,
-        "sold_qty": 2.5,
-        "use_day": 2
+        "sold_qty": 0,
+        "use_day": 0
     },
     {
         "name": "Rau ngò",
         "type": "Ngắn hạn",
         "supplier": "Chợ C",
         "import_price": 15000,
-        "import_qty": 2.0,
+        "import_qty": 1.0,
         "sell_price": 30000,
-        "sold_qty": 1.0,
-        "use_day": 2
+        "sold_qty": 0,
+        "use_day": 0
     },
     {
         "name": "Pate",
         "type": "Dài hạn",
         "supplier": "Cửa hàng D",
         "import_price": 100000,
-        "import_qty": 5.0,
+        "import_qty": 4.5,
         "sell_price": 160000,
-        "sold_qty": 0.5,
-        "use_day": 10
+        "sold_qty": 0,
+        "use_day": 8
     },
     {
         "name": "Bơ",
         "type": "Dài hạn",
         "supplier": "Cửa hàng D",
         "import_price": 80000,
-        "import_qty": 3.0,
+        "import_qty": 2.7,
         "sell_price": 130000,
-        "sold_qty": 0.3,
-        "use_day": 10
+        "sold_qty": 0,
+        "use_day": 8
     },
     {
         "name": "Sốt mayo",
         "type": "Dài hạn",
         "supplier": "Siêu thị E",
         "import_price": 90000,
-        "import_qty": 4.0,
+        "import_qty": 2.4000000000000004,
         "sell_price": 150000,
-        "sold_qty": 0.4,
-        "use_day": 20
+        "sold_qty": 0,
+        "use_day": 18
     },
     {
         "name": "Tương ớt",
@@ -87,6 +87,6 @@
         "import_qty": 4.8,
         "sell_price": 120000,
         "sold_qty": 0,
-        "use_day": 29
+        "use_day": 27
     }
 ]

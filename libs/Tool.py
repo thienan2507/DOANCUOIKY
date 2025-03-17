@@ -1,15 +1,13 @@
 import xlsxwriter as xr
 from openpyxl.reader.excel import load_workbook
-
 from DoAnCuoiKy.models.Material import Material
 
 
 class Tool:
     def export_materials_to_excel(self,filename,materials):
-    #chức năng xuất dữ liệu qua file excel
+    #export danh sách nguyên liệu
         workbook = xr.Workbook(filename)
         worksheet = workbook.add_worksheet()
-        # Modify column width
         worksheet.set_column('A:A', 15)
         worksheet.set_column('B:B', 25)
         worksheet.set_column('C:C', 15)
@@ -38,6 +36,50 @@ class Tool:
             worksheet.write(f'F{index}', mt.sell_price)
             worksheet.write(f'G{index}', mt.sold_qty)
             worksheet.write(f'H{index}', mt.use_day)
+        workbook.close()
+
+    def export_employees_to_excel(self,filename,employees):
+    #export danh sách nhân viên
+        workbook = xr.Workbook(filename)
+        worksheet = workbook.add_worksheet()
+        worksheet.set_column('A:A', 15)
+        worksheet.set_column('B:B', 25)
+        worksheet.set_column('C:C', 15)
+        worksheet.set_column('D:D', 15)
+        bold = workbook.add_format({'bold': True})
+        worksheet.write('A1', 'Employee ID', bold)
+        worksheet.write('B1', 'Employee Name', bold)
+        worksheet.write('C1', 'Username', bold)
+        worksheet.write('D1', 'Password', bold)
+        for i in range(len(employees)):
+            index = i + 2
+            e = employees[i]
+            worksheet.write(f'A{index}', e.EmployeeId)
+            worksheet.write(f'B{index}', e.EmployeeName)
+            worksheet.write(f'C{index}', e.UserName)
+            worksheet.write(f'D{index}', e.Password)
+        workbook.close()
+
+    def export_managers_to_excel(self,filename,managers):
+    #export danh sách quản lí
+        workbook = xr.Workbook(filename)
+        worksheet = workbook.add_worksheet()
+        worksheet.set_column('A:A', 15)
+        worksheet.set_column('B:B', 25)
+        worksheet.set_column('C:C', 15)
+        worksheet.set_column('D:D', 15)
+        bold = workbook.add_format({'bold': True})
+        worksheet.write('A1', 'Manager ID', bold)
+        worksheet.write('B1', 'Manager Name', bold)
+        worksheet.write('C1', 'Username', bold)
+        worksheet.write('D1', 'Password', bold)
+        for i in range(len(managers)):
+            index = i+2
+            m = managers[i]
+            worksheet.write(f'A{index}', m.EmployeeId)
+            worksheet.write(f'B{index}', m.EmployeeName)
+            worksheet.write(f'C{index}', m.UserName)
+            worksheet.write(f'D{index}', m.Password)
         workbook.close()
 
     def import_material_from_excel(self, filename):
