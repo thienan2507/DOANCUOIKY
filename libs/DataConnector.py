@@ -13,9 +13,9 @@ class DataConnector:
         return materials
 
     def get_all_employees(self):
-    #lấy tất cả thông tin nhân viên
+    #lấy tất cả thông tin nhân vie
         jff = JsonFileFactory()
-        filename = '../dataset/employees.json'
+        filename = "../dataset/employees.json"
         employees = jff.read_data(filename, Employee)
         return employees
 
@@ -58,8 +58,17 @@ class DataConnector:
                 return i
         return -1
 
+    def find_index_employee(self, emp_id):
+    #tim vị trí của nhân viên trong danh sách nhân viên
+    #so sánh id có trùng khớp không
+        employees = self.get_all_employees()
+        for i in range(len(employees)):
+            if employees[i].EmployeeId == emp_id:
+                return i
+        return -1
+
     def delete_material(self,name):
-    #chức năng xóa
+    #chức năng xóa nguyên liệu
         index=self.find_index_material(name)
         if index !=-1:
             self.materials.pop(index)
@@ -67,19 +76,47 @@ class DataConnector:
             filename = "../dataset/materials.json"
             jff.write_data(self.materials, filename)
 
+    def delete_employee(self, emp_id):
+    #chức năng xóa nhân viên
+        employees = self.get_all_employees()
+        index = self.find_index_employee(emp_id)
+        if index != -1:
+            employees.pop(index)  # Xóa nhân viên khỏi danh sách
+            jff = JsonFileFactory()
+            filename = "../dataset/employees.json"
+            jff.write_data(employees, filename)  # Ghi lại danh sách mới
+
     def save_new_material(self,material):
-    #chức năng thêm mới
+    #chức năng thêm mới nguyên liệu
         materials = self.get_all_materials()
         materials.append(material)
         jff = JsonFileFactory()
         filename = "../dataset/materials.json"
         jff.write_data(materials, filename)
 
+    def save_new_employee(self, employee):
+    # chức năng thêm mới nhân viên
+        employees = self.get_all_employees()
+        employees.append(employee)
+        jff = JsonFileFactory()
+        filename = "../dataset/employees.json"
+        jff.write_data(employees, filename)
+
     def save_update_material(self,current_material):
-    #chức năng cập nhật
+    #chức năng cập nhật nguyên liệu
         index=self.find_index_material(current_material.name)
         if index !=-1:
             self.materials[index]=current_material
             jff = JsonFileFactory()
             filename = "../dataset/materials.json"
             jff.write_data(self.materials, filename)
+
+    def save_update_employee(self, current_employee):
+    #chức năng cập nhật nhân viên
+        employees = self.get_all_employees()  # Lấy danh sách mới nhất
+        index = self.find_index_employee(current_employee.EmployeeId)  # Tìm theo ID
+        if index != -1:
+            employees[index] = current_employee
+            jff = JsonFileFactory()
+            filename = "../dataset/employees.json"
+            jff.write_data(employees, filename)  # Lưu vào file

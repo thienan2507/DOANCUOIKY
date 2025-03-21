@@ -2,13 +2,14 @@ from PyQt6.QtWidgets import QMessageBox, QMainWindow
 
 from DoAnCuoiKy.libs.DataConnector import DataConnector
 from DoAnCuoiKy.ui.LoginMainWindow import Ui_MainWindow
+from DoAnCuoiKy.ui.ManagerMainWindowExt import ManagerMainWindowExt
 from DoAnCuoiKy.ui.MaterialManagementExt import MaterialManagementExt
 
 
 class LoginMainWindowExt(Ui_MainWindow):
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)
-        self.MainWindow=MainWindow
+        self.MainWindow = MainWindow
         self.setupSignalAndSlot()
 
     def showWindow(self):
@@ -19,13 +20,15 @@ class LoginMainWindowExt(Ui_MainWindow):
         self.pushButtonExit.clicked.connect(self.process_exit)
 
     def process_login(self):
-    #hàm kiểm tra thông tin nhập người dùng và xác định vai trò user
-        username = self.lineEditUserName.text()
-        password = self.lineEditPassword.text()
+        #Kiểm tra thông tin đăng nhập và mở cửa sổ theo vai trò
+        username = self.lineEditUserName.text().strip()
+        password = self.lineEditPassword.text().strip()
+
         if not username or not password:
             QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng nhập đầy đủ username và password!")
             return
-            # Xác định vai trò từ radio button
+
+        # Kiểm tra vai trò được chọn
         if self.radioButtonEmployee.isChecked():
             role = "Employee"
         elif self.radioButtonManager.isChecked():
@@ -33,21 +36,28 @@ class LoginMainWindowExt(Ui_MainWindow):
         else:
             QMessageBox.warning(self.MainWindow, "Lỗi", "Vui lòng chọn vai trò!")
             return
-        # Kết nối database
+
+        # Kiểm tra đăng nhập với database
         dc = DataConnector()
-        user = dc.login(username, password, role)  # Truy vấn user theo role => thuc hiện login
-        #nếu thành công
-        if user:
+        user = dc.login(username, password, role)
+
+        if user:  # Đăng nhập thành công
             self.MainWindow.close()
             self.mainwindow = QMainWindow()
-            self.myui = MaterialManagementExt(role) #mo cửa sổ nguyên liệu theo vai trò
+        #nếu là quản lỉ => mở cửa sổ quản lí
+        #nếu là nhân vien => mở cửa sổ quản lí nguyên liệu
+            if role == "Manager":
+                self.myui = ManagerMainWindowExt(role)
+            else:
+                self.myui = MaterialManagementExt(role)
+
             self.myui.setupUi(self.mainwindow)
             self.myui.showWindow()
         else:
             QMessageBox.warning(self.MainWindow, "Lỗi", "Tên đăng nhập hoặc mật khẩu không đúng!")
 
     def process_exit(self):
-    #button exit
+        #Xác nhận thoát chương trình
         msgbox = QMessageBox(self.MainWindow)
         msgbox.setText("Chắc chắn thoát?")
         msgbox.setWindowTitle("Xác nhận thoát")
@@ -56,7 +66,3 @@ class LoginMainWindowExt(Ui_MainWindow):
         msgbox.setStandardButtons(buttons)
         if msgbox.exec() == QMessageBox.StandardButton.Yes:
             exit()
-
-
-
-

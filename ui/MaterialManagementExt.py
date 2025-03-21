@@ -115,14 +115,14 @@ class MaterialManagementExt(Ui_mainWindow):
 
     def xuly_xoa(self):
         name = self.lineEditName.text()
-        #hiển thị cửa sổ cảnh báo
+        # hiển thị cửa sổ cảnh báo
         msgbox = QMessageBox(self.MainWindow)
         msgbox.setWindowTitle("Xác nhận xóa")
         msgbox.setText(f"Xác nhận xóa [{name}] ?")
         msgbox.setIcon(QMessageBox.Icon.Critical)
         buttons = QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
         msgbox.setStandardButtons(buttons)
-        if msgbox.exec() == QMessageBox.StandardButton.No:#nếu bấm "No"=> quay về
+        if msgbox.exec() == QMessageBox.StandardButton.No:  # nếu bấm "No"=> quay về
             return
         # Xóa dữ liệu trong file JSON
         self.dc.delete_material(name)

@@ -227,7 +227,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../../../../.designer/images/image_save.png</normaloff>../../../../.designer/images/image_save.png</iconset>
+       <normaloff>../images/image_save.png</normaloff>../images/image_save.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -258,7 +258,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../../../../.designer/images/image_remove.png</normaloff>../../../../.designer/images/image_remove.png</iconset>
+       <normaloff>../images/image_remove.png</normaloff>../images/image_remove.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -493,7 +493,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../../../../.designer/images/image_search.png</normaloff>../../../../.designer/images/image_search.png</iconset>
+       <normaloff>../images/image_search.png</normaloff>../images/image_search.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -560,7 +560,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../../../../.designer/images/image_summary.png</normaloff>../../../../.designer/images/image_summary.png</iconset>
+       <normaloff>../images/image_summary.png</normaloff>../images/image_summary.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -591,7 +591,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../../../../.designer/images/image_clear.png</normaloff>../../../../.designer/images/image_clear.png</iconset>
+       <normaloff>../images/image_clear.png</normaloff>../images/image_clear.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -622,7 +622,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>../../../../.designer/images/image_update.png</normaloff>../../../../.designer/images/image_update.png</iconset>
+       <normaloff>../images/image_update.png</normaloff>../images/image_update.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -654,7 +654,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../../../.designer/images/image_search.png</normaloff>../../../../.designer/images/image_search.png</iconset>
+      <normaloff>../images/image_search.png</normaloff>../images/image_search.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -705,7 +705,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
   <action name="actionExit">
    <property name="icon">
     <iconset>
-     <normaloff>../../../../.designer/images/image_exit.png</normaloff>../../../../.designer/images/image_exit.png</iconset>
+     <normaloff>../images/image_exit.png</normaloff>../images/image_exit.png</iconset>
    </property>
    <property name="text">
     <string>Exit</string>
@@ -717,7 +717,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
   <action name="actionImport_from_Excel">
    <property name="icon">
     <iconset>
-     <normaloff>../../../../.designer/images/image_excel.png</normaloff>../../../../.designer/images/image_excel.png</iconset>
+     <normaloff>../images/image_excel.png</normaloff>../images/image_excel.png</iconset>
    </property>
    <property name="text">
     <string>Import From Excel File</string>
@@ -729,7 +729,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
   <action name="actionHelp">
    <property name="icon">
     <iconset>
-     <normaloff>../../../../.designer/images/image_help.png</normaloff>../../../../.designer/images/image_help.png</iconset>
+     <normaloff>../images/image_help.png</normaloff>../images/image_help.png</iconset>
    </property>
    <property name="text">
     <string>Help</string>
@@ -741,7 +741,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
   <action name="actionAbout">
    <property name="icon">
     <iconset>
-     <normaloff>../../../../.designer/images/image_about.png</normaloff>../../../../.designer/images/image_about.png</iconset>
+     <normaloff>../images/image_help.png</normaloff>../images/image_help.png</iconset>
    </property>
    <property name="text">
     <string>About</string>
@@ -771,8 +771,15 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
   </action>
   <action name="actionExport_To_Excel_File">
+   <property name="icon">
+    <iconset>
+     <normaloff>../images/image_excel.png</normaloff>../images/image_excel.png</iconset>
+   </property>
    <property name="text">
     <string>Export To Excel File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
    </property>
   </action>
  </widget>

@@ -1,5 +1,7 @@
 import xlsxwriter as xr
 from openpyxl.reader.excel import load_workbook
+
+from DoAnCuoiKy.models.Employee import Employee
 from DoAnCuoiKy.models.Material import Material
 
 
@@ -60,30 +62,8 @@ class Tool:
             worksheet.write(f'D{index}', e.Password)
         workbook.close()
 
-    def export_managers_to_excel(self,filename,managers):
-    #export danh sách quản lí
-        workbook = xr.Workbook(filename)
-        worksheet = workbook.add_worksheet()
-        worksheet.set_column('A:A', 15)
-        worksheet.set_column('B:B', 25)
-        worksheet.set_column('C:C', 15)
-        worksheet.set_column('D:D', 15)
-        bold = workbook.add_format({'bold': True})
-        worksheet.write('A1', 'Manager ID', bold)
-        worksheet.write('B1', 'Manager Name', bold)
-        worksheet.write('C1', 'Username', bold)
-        worksheet.write('D1', 'Password', bold)
-        for i in range(len(managers)):
-            index = i+2
-            m = managers[i]
-            worksheet.write(f'A{index}', m.EmployeeId)
-            worksheet.write(f'B{index}', m.EmployeeName)
-            worksheet.write(f'C{index}', m.UserName)
-            worksheet.write(f'D{index}', m.Password)
-        workbook.close()
-
     def import_material_from_excel(self, filename):
-    #nhập dữ liệu từ file excel
+    #nhập dữ liệu nguyên liêu từ file excel
         wb = load_workbook(filename)
         ws = wb[wb.sheetnames[0]]
         is_header = True
@@ -104,3 +84,22 @@ class Tool:
             materials.append(m)
         wb.close()
         return materials
+
+    def import_employee_from_excel(self, filename):
+        # nhập dữ liệu nhân viên từ file excel
+        wb = load_workbook(filename)
+        ws = wb[wb.sheetnames[0]]
+        is_header = True
+        employees = []
+        for row in ws.values:
+            if is_header == True:
+                is_header = False
+                continue
+            EmployeeId = row[0]
+            EmployeeName = row[1]
+            UserName = row[2]
+            Password = row[3]
+            e = Employee(EmployeeId, EmployeeName, UserName, Password)
+            employees.append(e)
+        wb.close()
+        return employees
