@@ -1,6 +1,5 @@
 import xlsxwriter as xr
 from openpyxl.reader.excel import load_workbook
-
 from DoAnCuoiKy.models.Employee import Employee
 from DoAnCuoiKy.models.Material import Material
 

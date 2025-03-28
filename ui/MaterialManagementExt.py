@@ -16,8 +16,6 @@ class MaterialManagementExt(Ui_mainWindow):
         self.dc=DataConnector()
         self.role = role
         self.materials=self.dc.get_all_materials()
-        self.employees=self.dc.get_all_employees()
-        self.managers=self.dc.get_all_managers()
         self.selected_material = None
         self.daily_summary_window = None
 

@@ -6,3 +6,4 @@ class Employee:
         self.Password=Password
     def __str__(self):
         return f"{self.EmployeeId}\t{self.EmployeeName}"
+
